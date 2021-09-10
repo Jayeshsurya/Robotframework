@@ -1,0 +1,15 @@
+*** Variables ***
+${browser}    Chrome
+${url}    http://demowebshop.tricentis.com/
+${F_name}    Prince
+${L_name}    Patel
+${Mail}    abcdepqr123@gmail.com
+${pass}    12345678
+@{tabs}    /books    /computers    /electronics    /apparel-shoes    /digital-downloads    /jewelry    /gift-cards
+${i}
+${recipient_name}    abcd
+${recipient_email}    abcd@gmail.com
+${sum}    0
+${cardholder_name}    Barbara Gordon
+${card_number}    4485564059489345
+${card_code}    123

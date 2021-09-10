@@ -1,0 +1,19 @@
+*** Settings ***
+Library    SeleniumLibrary
+Resource    ../Keyword/Keywords_poc.robot
+Resource    ../Varibale/Variable_poc.robot
+Resource    ../Locator/Locator_poc.robot
+
+
+*** Test Cases ***
+Register to the website
+    Launch the application
+    # Register to the Application
+    Login to the Application
+    # Validate tabs on the home page
+    # Verify the Sections on the Home page
+    Select one item and add to cart
+    Verify Sub-Total with Total
+    # Check-out
+    
+          

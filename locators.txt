@@ -1,0 +1,64 @@
+*** Variables ***
+${Header_logo}    //div[@class="header-logo"]
+${Register}    //a[@class="ico-register"]
+${Register_logo}    //div[@class="page-title"]
+
+${Personal_detail}    //div[@class="page-body"]
+${Gender}    //input[@id="gender-male"]
+${First_name}    (//input[@class="text-box single-line"])[1]
+${Last_name}    (//input[@class="text-box single-line"])[2]
+${mail_id}    //input[@data-val-email="Wrong email"]
+${Password}    (//input[@class="text-box single-line password"])[1]
+${Confrim_password}    (//input[@class="text-box single-line password"])[2]
+${Submit}    (//input[@type="submit"])[2]
+${cont}    (//input[@type="button"])[2]
+
+${login_page}    //a[@class="ico-login"]
+${customer}    //div[@class="returning-wrapper"]
+${Log_mail}    //input[@class="email"]
+${Log_pass}    //input[@class="password"]
+${Remember_me}    //input[@id="RememberMe"]
+${login}    //input[@class="button-1 login-button"]
+
+${header_list}    (//a[@href="replacevar"])[1]
+${lists}    //div[@class="header-menu"]
+${list_contain}    //div[@class="master-wrapper-content"]
+
+${item}    //div[@class='product-grid']/div[1]/div/div[@class='details']/h2/a
+${book}    (//a[@href="/books"])[1]
+${page_body}    //div[@class="page-body"]
+${Add_Cart}    (//input[@value="Add to cart"])[1]
+${Notification}    //*[@id="bar-notification"]
+${computer}    (//a[@href="/computers"])[1]
+${Desktop}    (//a[@href="/desktops"])[4]
+${Elect}    (//a[@href="/electronics"])[1]
+${Cell_phone}    (//a[@href="/cell-phones"])[4]
+${apparel}    (//a[@href="/apparel-shoes"])[1]
+${Digital}    (//a[@href="/digital-downloads"])[1]
+${Jewelry}    (//a[@href="/jewelry"])[1]
+${length}    //input[@class="textbox"]
+${Gift_card}    (//a[@href="/gift-cards"])[1]
+${r_name}    //input[@class="recipient-name"]
+${r_email}    //input[@class="recipient-email"]
+
+${main_page}    //a[@href="/"]\
+
+${Shopping_Cart}    //*[@id="topcartlink"]/a/span[1]
+
+${price}        //span[@class="product-price order-total"]
+${checkout}    //button[@type="submit"]
+${bill_address}    (//input[@type="button"])[2]
+${ship_address}    (//input[@type="button"])[3]
+${ship_method}    (//input[@type="button"])[4]
+${payment}    (//input[@type="button"])[5]
+
+${c_name}    //input[@name="CardholderName"]
+${c_number}    //input[@name="CardNumber"]
+${exp_mon}    //*[@id="ExpireMonth"]/option[4]
+${exp_year}    //*[@id="ExpireYear"]/option[2]
+${c_code}    //input[@id="CardCode"]
+
+${confirm_payment}    (//input[@type="button"])[6]
+${confirm_order}    (//input[@type="button"])[7]    
+${thanks}    //input[@type="button"]
+    

@@ -1,0 +1,136 @@
+*** Settings ***
+Library    SeleniumLibrary
+Library    String
+Resource    ../Varibale/Variable_poc.robot
+Resource    ../Locator/Locator_poc.robot
+
+*** Keywords ***
+Launch the application
+    Open Browser    ${url}    ${browser}
+    Maximize Browser Window
+    Wait Until Element Is Visible   ${Header_logo}    10s
+    
+Register to the Application
+    Click Element    ${Register} 
+    Wait Until Element Is Visible    ${Personal_detail}    10s
+    Click Element    ${Gender}
+    Input Text    ${First_name}    ${F_name}
+    Input Text    ${Last_name}    ${L_name}
+    Input Text    ${mail_id}   ${Mail}
+    Input Password    ${Password}    ${pass}
+    Input Password    ${Confrim_password}    ${pass}    
+    Click Button    ${Submit}
+    Wait Until Element Is Visible    ${cont}    10s
+    Click Button    ${cont}
+    
+Login to the Application
+    Click Element    ${login_page}
+    Wait Until Element Is Visible    ${customer}    10s
+    Input Text    ${Log_mail}    ${Mail}
+    Input Password    ${Log_pass}    ${pass}
+    Click Element    ${Remember_me}
+    Click Button    ${login}
+    Wait Until Element Is Visible    ${lists}    
+    
+Validate tabs on the home page
+      FOR    ${i}    IN    @{tabs}
+           ${store}    Replace String    ${header_list}    replacevar    ${i}
+           Click Element    ${store}
+           Wait Until Element Is Visible    ${list_contain}      
+      END
+      
+Verify the Sections on the Home page
+    FOR    ${i}    IN RANGE    1    7
+        Page Should Contain Element    (//div[@class="title"])[${i}]
+    END
+    
+Select one item and add to cart
+    Click Link    ${book}
+    Wait Until Element Is Visible    ${page_body}
+    Click element    ${item}  
+    Click Button    ${Add_Cart}
+    Sleep    2            
+    # Wait Until Page Contains Element    ${Notification}
+    # Click Link    ${computer}
+    # Wait Until Element Is Visible    ${page_body}
+    # Click Link    ${Desktop}
+    # Wait Until Element Is Visible    ${page_body}
+    # Click Element    ${item}    
+    # Click Button    ${Add_Cart}
+    # Sleep    2                        
+    # Wait Until Page Contains Element    ${Notification}
+    Click Link    ${Elect}
+    Wait Until Element Is Visible    ${page_body}
+    Click Link    ${Cell_phone}
+    Wait Until Element Is Visible    ${page_body}
+    Click Element    ${item}     
+    Click Button    ${Add_Cart}
+    Sleep    2        
+    # Wait Until Page Contains Element    ${Notification}
+    Click Link    ${apparel}
+    Wait Until Element Is Visible    ${page_body}    
+    Click Element    ${item}
+    Click Button    ${Add_Cart}
+    Sleep    2            
+    # Wait Until Page Contains Element    ${Notification}
+    Click Link    ${Digital}
+    Wait Until Element Is Visible    ${page_body}
+    Click Element    ${item}
+    Click Button    ${Add_Cart}
+    Sleep    2    
+    # Wait Until Page Contains Element    ${Notification}
+    Click Link    ${Jewelry}
+    Wait Until Element Is Visible    ${page_body}
+    Click Element    ${item}
+    Input Text    ${length}    5    
+    Click Button    ${Add_Cart}
+    Sleep    2    
+    # Wait Until Page Contains Element    ${Notification}
+    Click Link    ${Gift_card}
+    Wait Until Element Is Visible    ${page_body}
+    Click Element    ${item}
+    Input Text    ${r_name}    ${recipient_name}
+    Input text    ${r_email}    ${recipient_email}    
+    Click Button    ${Add_Cart}
+    # Sleep    2
+    # Click Element    ${main_page}        
+    # # Wait Until Page Contains Element    ${Notification}
+    
+Verify Sub-Total with Total    
+    Click Element    ${Shopping_Cart}    
+    
+    FOR    ${i}    IN RANGE    1    7
+        ${value}    Get Text    (//span[@class="product-subtotal"])[${i}]
+        ${sum}    Evaluate    ${sum}+${value}                        
+        Log    ${sum}
+    END
+    ${total}    Get Text    ${price}
+    Should Be Equal As Numbers    ${sum}    ${total}
+       
+# Check-out          
+    Select Checkbox    termsofservice
+    Click Button    ${checkout}
+    Sleep    2        
+    Click Button    ${bill_address}
+    # Wait Until Element Is Visible    ${bill_address}
+    Sleep    2        
+    Click Element    ${ship_address}
+    # Wait Until Element Is Visible    ${ship_address}
+    Sleep    2
+    Click Button    ${ship_method}
+    Sleep    2                
+    Select Radio Button    paymentmethod    Payments.Manual
+    Click Button    ${payment}
+    sleep    2
+    Input text    ${c_name}    ${cardholder_name}
+    Input Text    ${c_number}    ${card_number}
+    Click Element    ${exp_mon}
+    Click Element    ${exp_year}
+    Input Password    ${c_code}    ${card_code}
+    Click Button    ${confirm_payment} 
+    sleep    2
+    Click Button    ${confirm_order}
+    sleep    2
+    Click button    ${thanks}    
+                   
+    # Wait Until Element Is Visible    ${payment}       
